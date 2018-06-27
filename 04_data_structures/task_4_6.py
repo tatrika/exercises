@@ -15,10 +15,12 @@ Outbound Interface:    FastEthernet0/0
 '''
 
 ospf_route = 'O        10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0'
+ospf_route = ospf_route.replace(',', '')
 route = ospf_route.split()
-##datalist = list(route)
-print(route)
-ospf, prefix, metric, via, nh, update, Interf = route 
+metric=route.pop(2).strip('[]')
+route.pop(2)
+route.insert(2, metric)
+ospf, prefix, metric, nh, update, Interf = route 
 ospf_template = '''
 Protocol:              OSPF
 Prefix:                {}
