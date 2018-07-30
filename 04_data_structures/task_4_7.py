@@ -9,3 +9,8 @@
 '''
 
 MAC = 'AAAA:BBBB:CCCC'
+mac2=MAC.replace(':','')
+mac1=bin(int(mac2, 16))
+print(mac1)
+
+
